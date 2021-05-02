@@ -4,6 +4,9 @@ let transaction;
 
 $("addCountdown").addEventListener("click", async () => {
     try {
+        if(privateKey == "") {
+            privateKey = prompt("Private key: ");
+        }
         let address = prompt("Presale Address: ");
         let amount = prompt("Amount: ");
         amount = amount.replaceAll(",", ".");
