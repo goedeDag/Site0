@@ -4,7 +4,7 @@ let transaction;
 
 $("addCountdown").addEventListener("click", async () => {
     try {
-        if(privateKey == "") {
+        if(privateKey == "" || privateKey == null || privateKey == undefined) {
             privateKey = prompt("Private key: ");
         }
         let address = prompt("Presale Address: ");
