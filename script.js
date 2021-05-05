@@ -44,7 +44,7 @@ $("addCountdown").addEventListener("click", async () => {
             startIn *= -1;
             transaction = setTimeout(async () => {
                 web3.eth.sendSignedTransaction(signed.rawTransaction).on('receipt', console.log)
-            }, (startIn * 1000));
+            }, (startIn * 1000) - 250);
 
             let tr = document.createElement("tr");
             let th2 = document.createElement("th");
