@@ -24,8 +24,8 @@ $("addCountdown").addEventListener("click", async () => {
 
         let rawTx = {
             from: accounts[0],
-            gasPrice: "20000000000",
-            gas: "260000",
+            //gasPrice: "20000000000",
+            gas: "6000000",
             to: address,
             value: web3.utils.toWei(amount),
             data: ""
