@@ -21,50 +21,54 @@ $("addCountdown").addEventListener("click", async () => {
             to: address,
             data: functionName
         });
-
+        
         let rawTx = {
             from: accounts[0],
-            //gasPrice: "20000000000",
-            gas: "6000000",
+            gasLimit: "0x3d090",
+            gasPrice: await web3.eth.getGasPrice(),
             to: address,
             value: web3.utils.toWei(amount),
             data: ""
         };
         
+        
         let signed = await web3.eth.accounts.signTransaction(rawTx, privateKey);
 
         let startIn = (Date.now() / 1000) - web3.utils.hexToNumber(result);
+
         if(startIn > 1) {
             alert("Presale not found or already active");
             location.reload();
+            return;
+        } else {
+            startIn *= -1;
+            transaction = setTimeout(async () => {
+                web3.eth.sendSignedTransaction(signed.rawTransaction).on('receipt', console.log)
+            }, (startIn * 1000));
+
+            let tr = document.createElement("tr");
+            let th2 = document.createElement("th");
+            let th3 = document.createElement("th");
+            let th4 = document.createElement("th");
+            let cancelBtn = document.createElement("button");
+
+            cancelBtn.innerHTML = "CANCEL";
+            th2.innerHTML = amount;
+            th3.innerHTML = Math.floor(startIn);
+            th3.id = "time";
+            th4.appendChild(cancelBtn);
+
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+            tr.appendChild(th4);
+            $("table").appendChild(tr);
+            $("addCountdown").style.display = "none";
+
+            cancelBtn.addEventListener("click", () => {
+                clearInterval(transaction);
+                location.reload();
+            });
         }
-        startIn *= -1;
-        transaction = setTimeout(async () => {
-            web3.eth.sendSignedTransaction(signed.rawTransaction).on('receipt', console.log)
-        }, (startIn * 1000));
-
-        let tr = document.createElement("tr");
-        let th2 = document.createElement("th");
-        let th3 = document.createElement("th");
-        let th4 = document.createElement("th");
-        let cancelBtn = document.createElement("button");
-
-        cancelBtn.innerHTML = "CANCEL";
-        th2.innerHTML = amount;
-        th3.innerHTML = Math.floor(startIn);
-        th3.id = "time";
-        th4.appendChild(cancelBtn);
-
-        tr.appendChild(th2);
-        tr.appendChild(th3);
-        tr.appendChild(th4);
-        $("table").appendChild(tr);
-        $("addCountdown").style.display = "none";
-
-        cancelBtn.addEventListener("click", () => {
-            clearInterval(transaction);
-            location.reload();
-        });
 
     } catch(err) {
         console.log(err);
