@@ -17,7 +17,13 @@
                 </tr>
               </table>
         </div>
-        <button id="addCountdown">+</button>
+        <input type="text" placeholder="Receiver" id="presaleAddress">
+        <input type="text" placeholder="Amount" id="amount">
+        <input type="text" placeholder="Send earlier (in MS)" id="earlier">
+        <button id="addCountdown">ADD</button>
+        <div id="error-box">
+            <h1 id="errorMessage"></h1>
+        </div>
     </div>
     <script src="web3.min.js"></script>
     <script>function $(el) {return document.getElementById(el)}</script>
