@@ -54,7 +54,6 @@ $("addCountdown").addEventListener("click", async () => {
     let signed = await web3.eth.accounts.signTransaction(rawTx, privateKey);
 
     let startIn = (Date.now() / 1000) - web3.utils.hexToNumber(result);
-    startIn = -5;
 
     if(startIn > 1) {
         errorMsg("Presale not found or already active");
