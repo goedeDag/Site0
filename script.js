@@ -84,9 +84,9 @@ $("addCountdown").addEventListener("click", async () => {
         $("table").appendChild(tr);
 
         cancelBtn.addEventListener("click", () => {
-            clearInterval(transactions.length-1);
-            $("tr" + (transactions.length-1).toString()).remove();
-            transactions[transactions.length-1] = undefined;
+            //clearInterval(transactions.length-1);
+            //$("tr" + (transactions.length-1).toString()).remove();
+            //transactions[transactions.length-1] = undefined;
         });
     }
 });
