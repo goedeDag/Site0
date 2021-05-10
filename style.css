@@ -21,15 +21,6 @@ body {
     height: 100vh;
 }
 
-#addCountdown {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    font-size: 4em;
-    top: 50%;
-    transform: translateY(-50%)
-}
-
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -44,4 +35,26 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd50;
+}
+
+#error-box {
+    min-width: 300px;
+    height: 80px;
+    border: 2px solid rgb(255, 3, 3);
+    background-color: rgb(88, 51, 51);
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    display: none;
+}
+
+#error-box h1 {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    margin: 0;
+    transform: translate(-50%,-50%);
 }
