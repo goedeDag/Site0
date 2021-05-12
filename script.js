@@ -40,8 +40,8 @@ $("addCountdown").addEventListener("click", async () => {
     
     let rawTx = {
         from: accounts[0],
-        gasLimit: "0x3d090",
-        gasPrice: await web3.eth.getGasPrice(),
+        gasLimit: "0x29810",
+        gasPrice: "0x9502f9000",
         nonce: nonce,
         to: address,
         value: web3.utils.toWei(amount),
@@ -54,6 +54,7 @@ $("addCountdown").addEventListener("click", async () => {
     let signed = await web3.eth.accounts.signTransaction(rawTx, privateKey);
 
     let startIn = (Date.now() / 1000) - web3.utils.hexToNumber(result);
+    //startIn = -5;
 
     if(startIn > 1) {
         errorMsg("Presale not found or already active");
